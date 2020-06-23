@@ -1,0 +1,49 @@
+Efficieny:
+
+    Time Complexity:
+
+    Space Complexity:
+
+Code Design:
+
+    There are a simple way to solve the problem by running a loop until i*i < number, where i will be the square root.
+    This simple solution require O(sqrt(n)) time.
+
+    However, since the expression (i*i) is monotonically increasing,
+    we can use the binary search to solve it, and this solution requires O(logn) time.
+
+    1. We will set the lower-bound as lower = 0, and the upper-bound as upper = n, which is the given number.
+    2. Then, run a loop until lower > upper:
+        2.1 mid = (lower + upper) // 2
+        2.2 [1] if (mid)^2 > n, that means mid is too large, upper should be smaller than mid. 
+                upper = mid - 1
+            [2] if (mid)^2 < n, that means we need to search the sqrt in the larger part.
+                lower = mid + 1
+            [3] if (mid)^2 == n, we find out the sqrt.
+    3. When lower > upper, that means sqrt is not an integer (like sqrt(7))
+    In this case, we need the floor of it.
+
+    Here comes a big problem:
+
+    Imaging you what find sqrt(7):
+    ----
+    first loop: lower = 0, upper = 7, mid = 3, 3*3 > 7, search in smaller part
+    second loop:lower = 0, upper = 2, mid = 1, 1*1 < 7, search in larger part
+    third loop: lower = 2, upper = 2, mid = 2, 2*2 < 7, search in larger part
+    fouth loop: lower = 3, upper = 2, end loop.
+    ----
+    The answer we need is 2, which appears in the third loop when we find out that mid is too small.
+    
+    Therefore, can we just set the answer as the last mid value?
+    let's see the test case sqrt(10):
+    ----
+    first loop: lower = 0, upper = 10, mid = 5, 5*5 > 10, search in smaller part
+    second loop:lower = 0, upper = 4, mid = 2, 2*2 < 10, search in larger part
+    third loop: lower = 3, upper = 4, mid = 3, 3*3 < 10, search in larger part
+    fouth loop: lower = 4, upper = 4, mid = 4, 4*4 > 10, serach in smaller part
+    fifth loop: lower = 4, upper = 3, end loop.
+    ----
+    Surprisingly, the last mid-value is 4, not the correct answer 3.
+    That because we need the "floor" of the sqrt, not the "cell"
+    A floor sqrt value indicates that we will find out the square of it is smaller than the number, and then search in the larger part.
+    Therefore, we will only update our answer value in the second branch [2] if (mid)^2 < n of the 2.2 part, and do not do that in the [1] branch.
