@@ -1,0 +1,34 @@
+Efficieny:
+
+    Time Complexity: O(NlogN) where N is the number of item in the array
+                     In the sorting part, we use quick sort that require O(NlogN) time.
+                     When assign number in digits, there are N loops and each loop require O(1) time. 
+    Space Complexity: O(N) where N is the number of item in the array
+                     We store the input array, ordered array and n1\n2
+
+Code Design:
+    First of all, what is the meaning of "sum is maximum"?
+
+    Before thinking about it, let's see how to build a big number from the array:
+    1. sort the array so that the numbers in it are in order.
+        e.g. [1,9,2,4]-->[9,4,2,1]
+    2. assign the larger number in the higher order, until no number remain in the array.
+        e.g. [9,4,2,1]-->9421
+    3. then you got the biggest number you can build from the array.
+
+    Now, we can think about how to build two number, who need to be as large as possible.
+    We use n1 and n2 to represent these two number, where 0 <= len(n1) - len(n2) <= 1.
+     - for array with even items (2n), len(n1) = len(n2) = 1
+     - for those with odd items (2n+1), len(n1) = n+1, len(n2) = n
+    we solve the problem with following steps:
+    1. sort the array.
+        e.g. [6,4,2,1,3,5] --> [6,5,4,3,2,1]
+        e.g. [6,5,2,3,1] --> [6,5,3,2,1]
+    2. assgin digits of n1 with the odd indices, and n2 with the even indices.
+        e.g. [6,5,4,3,2,1] --> n1 = 642, n2 = 531
+        e.g. [6,5,3,2,1] --> n1 = 631, n2 = 52
+    3. then we got the numbers whose sum is maximum. 
+       (not a rigorous proof, but I think the result is correct)
+
+    Consequently, the sorting algorithm is the key point of this problem.
+    I use quick sort to achieve O(NlogN) time Complexity.
