@@ -1,13 +1,13 @@
 Efficieny:
 
-    Time Complexity:
-
-    Space Complexity:
+    Time Complexity: O(logn) where n is the number of integers before the given number.
+                     Binary search is used to achieve it.
+    Space Complexity: O(1), the variable (lower, upper, number, mid, square, answer) always take constant space.
 
 Code Design:
 
     There are a simple way to solve the problem by running a loop until i*i < number, where i will be the square root.
-    This simple solution require O(sqrt(n)) time.
+    This simple solution require O(sqrt(n)) time, where n is the number of integers before the given number.
 
     However, since the expression (i*i) is monotonically increasing,
     we can use the binary search to solve it, and this solution requires O(logn) time.
