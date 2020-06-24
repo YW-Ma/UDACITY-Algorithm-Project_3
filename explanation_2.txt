@@ -1,0 +1,15 @@
+Efficieny:
+
+    Time Complexity: O(logN) where N is the length of the input list.
+    Space Complexity: O(1), all variables take constant space.
+
+Code Design:
+    O(logN) time Complexity means binary search may be helpful to solve it.
+    After the rotation, the list can be treated as two smaller sorted sub-list.
+    We can simply do binary search on one of it to search the target.
+
+    The key point is find out the ending of the first sub-list( or the starting of the second sub-list) 
+
+    I split the problem into two part:
+    1. find out the smallest one, i.e. the original beginning item before the rotation.
+    2. simply do binary search on the left sub-list or the right one.
