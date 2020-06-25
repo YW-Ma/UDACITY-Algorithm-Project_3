@@ -1,4 +1,8 @@
 def quick_sort(data):
+    """
+    Quick sort,
+    in descending order.
+    """
     if len(data) <= 1: # base case
         return data
     else:
@@ -8,9 +12,9 @@ def quick_sort(data):
         data.remove(mid) # remove the base value from the list
         for i in data:
             if i >= mid:
-                right.append(i)
-            else:
                 left.append(i)
+            else:
+                right.append(i)
         return quick_sort(left) + [mid] + quick_sort(right)
 
 def rearrange_digits(input_list):
@@ -22,7 +26,7 @@ def rearrange_digits(input_list):
     Returns:
        (int),(int): Two maximum sums
     """
-    # 1. Sorting part:
+    # 1. Sorting part: in descending order
     sorted_list = quick_sort(input_list)
     # 2. Digit filling part:
     n1 = 0
@@ -33,7 +37,9 @@ def rearrange_digits(input_list):
     for i in range(1, len(sorted_list), 2): # even indices
         n2 = n2*10
         n2 += sorted_list[i]
+    return [n1,n2]
 
+# TEST
 
 def test_function(test_case):
     output = rearrange_digits(test_case[0])
@@ -43,5 +49,12 @@ def test_function(test_case):
     else:
         print("Fail")
 
-test_function([[1, 2, 3, 4, 5], [542, 31]])
-test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
+test_case_1 = [[4, 6, 2, 5, 9, 8], [964, 852]]
+test_case_2 = [[], [0, 0]]
+test_case_3 = [[1], [1, 0]]
+test_case_4 = [[4, 6, 2, 5, 9], [952, 64]]
+
+test_function(test_case_1)
+test_function(test_case_2)
+test_function(test_case_3)
+test_function(test_case_4)
