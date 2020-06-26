@@ -9,3 +9,4 @@ Code Design:
 
     NOTICE: DO NOT set the initial value of max as 0 !!! 
             Because the input can be both positive and negative. (see test case #2)
+            So a simple way is assign max and min value to the 0th index of the list.

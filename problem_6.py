@@ -8,8 +8,8 @@ def get_min_max(ints):
    """
    if len(ints) == 0:
       return None
-   max = -sys.maxsize
-   min = sys.maxsize
+   max = ints[0]
+   min = ints[0]
    for i in ints:
       if i <= min:
          min = i
