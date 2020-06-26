@@ -1,7 +1,11 @@
 Efficieny:
 
     Time Complexity: O(N) where N is the number of item in the array
+                    There are N iteration and in each one
+                    we need to determine which list the current item should be appended to.
+
     Space Complexity: O(N) where N is the number of item in the array
+                    Storing each items in the input array.
 
 Code Design:
 
