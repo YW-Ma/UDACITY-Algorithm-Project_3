@@ -4,7 +4,9 @@ Efficieny:
                      In the sorting part, we use quick sort that require O(NlogN) time.
                      When assign number in digits, there are N loops and each loop require O(1) time. 
     Space Complexity: O(N) where N is the number of item in the array
-                     We store the input array, ordered array and n1\n2
+                     We store the input array, ordered array and n1,n2
+                     Additionally, the call stack require O(logN) space for quick sort.
+                     The O(logN) represents the depth of the call stack.
 
 Code Design:
     First of all, what is the meaning of "sum is maximum"?
