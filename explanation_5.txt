@@ -36,15 +36,19 @@ Code Design:
         DFS:
             Input: 
                 current node, the key(char) of current node
-
+                Creat a list to store the return value
             Base case:
-                Children is None, return a list only contain the key of current node.
-
-            Procedure: 
-                Creat a list
+                Children is a "leaf", append current value to the list.
+                
+                NOTICE: Do not return here, since a "leaf" may also have descendents.
+                        e.g. "space" "spacecraft", just record the "e" when you arrive the last character of "space", 
+                              but don't return it. Otherwise, we will lose the "spacecraft"
+            Procedure:      
                 For each child, get the DFS return value of it,
                 iterate over the return value,
                 and append (current key + an item return value) to the list.
+
+                NOTICE: If we reach the "e" of "space", we will find that it have a child "c" which lead us to "spacecraft".
 
             Return:
                 the list
