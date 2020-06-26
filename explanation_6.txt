@@ -1,0 +1,11 @@
+Efficieny:
+    Time Complexity: O(N), where N is the length of the list of integers
+    Space Complexity: auxiliary space is O(1)
+
+Code Design:
+    Update min and max values in each iteration.
+    Make sure the initial value of min is big enough (I use sys.maxsize here),
+    and the initial value of max is small enough (I use -sys.maxsize here).
+
+    NOTICE: DO NOT set the initial value of max as 0 !!! 
+            Because the input can be both positive and negative. (see test case #2)
