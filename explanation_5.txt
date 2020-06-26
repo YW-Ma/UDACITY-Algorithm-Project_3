@@ -1,0 +1,50 @@
+Efficieny:
+
+Insert and find keys:
+    Time Complexity: O(N), where N is the length of the key
+    Space Complexity: Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stores in the trie.
+
+Searching a prefix:
+    Time Complexity: O(N), where N is the length of the prefix
+    Space Complexity: Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stores in the trie.
+
+Searching suffixes:
+    Time Complexity: O(N), each node is visited once.
+    Space Complexity:   Space used by DFS: O(H), where H is the height of the tree.
+                        Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stores in the trie.
+
+Code Design:
+
+    1. Insertion a key(or word) in a Trie:
+        [0] Everything start from the root node.
+        [1] Each character of the input key correspondent to a trie node.
+            If they are not existed in the trie, we need to create one.
+            ( that means there will be a loop checking whether each character is existed, 
+              if not existed, we need append a node. )
+        [2] On the last node, mark it as a Leaf node (or "the end of a key")
+            ( notice, if there are key "the" and "there", both "e" are leaf, though the first one have child)
+    
+    2. Searching a prefix in a Trie:
+        [0] Everything start from the root node.
+        [1] Check whether each character in the prefix existed in the trie.
+            if not, return None.
+        [2] return current node back
+    
+    3. Finding Suffixes:
+        Finding out the suffixes from a given node, we can use preorder DFS to solve it.
+        
+        DFS:
+            Input: 
+                current node, the key(char) of current node
+
+            Base case:
+                Children is None, return a list only contain the key of current node.
+
+            Procedure: 
+                Creat a list
+                For each child, get the DFS return value of it,
+                iterate over the return value,
+                and append (current key + an item return value) to the list.
+
+            Return:
+                the list
