@@ -1,17 +1,17 @@
 Efficieny:
 
-Insert and find keys:
-    Time Complexity: O(N), where N is the length of the key
-    Space Complexity: Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stores in the trie.
+    Trie.insert():
+        Time Complexity: O(N), where N is the length of the key
+        Space Complexity: Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stored in the trie.
 
-Searching a prefix:
-    Time Complexity: O(N), where N is the length of the prefix
-    Space Complexity: Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stores in the trie.
+    Trie.find():
+        Time Complexity: O(N), where N is the length of the prefix
+        Space Complexity: Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stored in the trie.
 
-Searching suffixes:
-    Time Complexity: O(N), each node is visited once.
-    Space Complexity:   Space used by DFS: O(H), where H is the height of the tree.
-                        Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stores in the trie.
+    TrieNode.suffixes():
+        Time Complexity: O(N), where N is the number of nodes in the Trie tree, since each node is visited once.
+        Space Complexity:   Space used by DFS: O(H), where H is the height of the tree.
+                            Space for the trie. O(N*M), where N is the length of keys and the M is the number of keys stored in the trie.
 
 Code Design:
 

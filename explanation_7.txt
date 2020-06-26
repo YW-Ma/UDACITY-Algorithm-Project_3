@@ -1,0 +1,33 @@
+Efficieny:
+
+    RouteTrie.insert():
+        Time Complexity: O(N), where N is the number of domains in the path
+        Space Complexity: Space for the trie. O(S*N*M),
+                         where S is the size of domain,
+                               N is the number of domains in a path,
+                         and   M is the number of path stored in the trie.
+
+    RouteTrie.find():
+        Time Complexity: O(N), where N is the number of domains in the path
+        Space Complexity: Space for the trie. O(S*N*M),
+                         where S is the size of domain,
+                               N is the number of domains in a path,
+                         and   M is the number of path stored in the trie.
+
+    Router.split_path():
+        Time Complexity: O(N), where N is the number of domains in the given path.
+        Space Complexity: O(N), where N is the number of domains in the given path.
+        
+Code Design:
+
+    1.  Router is a user friendly interface, whose is responsible for converting 
+        the path given by user into a correct domain list.
+        We need to consider wether the path has a tailing slash or not.
+        In this code, [domain for domain in path.split("/") if domain] is responsible for this consideration.
+        Spliting by "/", a path become a list that has empty string before the beginning slash and after the tailing slash.
+        With a "if" judgement, we collect domain to our domain list only if they are not empty.
+
+    2.  insert and find:
+        They are similar to the one we created in the problem_5.py to build a autocomplete function
+        But the .is_word attribute is replaced by .handler attribute.
+        
