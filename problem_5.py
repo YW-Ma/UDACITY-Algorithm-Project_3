@@ -10,23 +10,39 @@ class TrieNode:
         self.children[char] = TrieNode()
         
     def suffixes(self, suffix = ''):
-        ## Recursive function that collects the suffix for 
-        ## all complete words below this point
-        return_list = []
-        
-        # Base case
+        container = []
+        # base case
         if self.is_word:
-            return_list.append(suffix)
-        # NOTICE: Since "base case" can still have descendent node,
-        #         we should not return here, but to explore its children
-        
-        # Major Procedure
-        for char in self.children:
-            suffixes = self.children[char].suffixes(char)
-            for val in suffixes:
-                return_list.append(suffix + val)
-        
-        return return_list
+            container.append(suffix)
+
+        # DFS value processing
+        for child in self.children:
+            suffixes_for_a_child = self.children[child].suffixes(child)
+            for suffix_child in suffixes_for_a_child:
+                container.append(suffix + suffix_child)
+
+        return container
+'''
+      >1
+    2
+  3|   6|
+4|  5|
+3\4\5\6都是word结尾，1是输入的字母。
+各层的container情况如下：
+
+到达base
+[]
+[3] --- [6]
+[4],[5]
+
+3的suffixes返回后
+[]
+[3,34,35] --- [6]
+
+2的suffixes返回后
+[23,234,235,26]
+
+'''
 
 class Trie:
     def __init__(self):
